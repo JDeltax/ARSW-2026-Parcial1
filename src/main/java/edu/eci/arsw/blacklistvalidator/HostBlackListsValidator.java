@@ -44,11 +44,12 @@ public class HostBlackListsValidator {
         int inicio = 0;
         BlackListThread[] threads = new BlackListThread[n];
 
-        for(int i = 0 ; i < base ; i++){
-            int tamano = base + (i == n -1 ? resto :0);
-            int finalito = inicio + tamano -1;
+
+        for(int i = 0 ; i < n ; i++){
+            int tamano = base + (i == n -1 ? resto : 0);
+            int finalito = inicio + tamano - 1;
             threads[i] = new BlackListThread(inicio,finalito, ipaddress , skds);
-            
+            threads[i].start();
         }
 
         for (BlackListThread t : threads){
